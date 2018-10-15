@@ -1,0 +1,48 @@
+﻿@model List<Model.Models.Commodity>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h2>Details: @ViewBag.ID</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            CommodityID
+        </th>
+        <th>
+            CommodityName
+        </th>
+        <th>
+            CommodityPrice
+        </th>
+        <th>
+            CommodityAmount
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommodityId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommodityName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommodityPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommodityAmount)
+        </td>
+    </tr>
+    }
+
+</table>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.First().OrderId }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

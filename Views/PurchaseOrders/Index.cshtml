@@ -1,0 +1,48 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@*<h2>Index</h2>*@
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            OrderID
+        </th>
+        <th>
+            Pruchase Time
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item)
+            </td>
+            <td>
+                @{
+                    long time = long.Parse(item.ToString().Substring(1, item.Length - 1));
+                    string time1 = DateTime.FromFileTime(time).ToString();
+                    //string time = item.OrderId.ToString().Substring(1, item.OrderId.ToString().Length - 1);
+                    //long time1 = DateTime.Now.ToFileTime();
+                    //string time2 = DateTime.FromFileTime(time1).ToString();
+                }
+                @time1
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.ToString() }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.OrderId })*@
+            </td>
+        </tr>
+    }
+
+</table>

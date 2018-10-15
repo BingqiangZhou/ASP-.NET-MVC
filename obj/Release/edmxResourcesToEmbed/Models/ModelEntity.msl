@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MVCModelStoreContainer" CdmEntityContainer="MVCEntities">
+    <EntitySetMapping Name="Commodities">
+      <EntityTypeMapping TypeName="IsTypeOf(MVCModel.Commodity)">
+        <MappingFragment StoreEntitySet="Commodities">
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="CommodityName" ColumnName="CommodityName" />
+          <ScalarProperty Name="CommodityPrice" ColumnName="CommodityPrice" />
+          <ScalarProperty Name="CommodityAmount" ColumnName="CommodityAmount" />
+          <ScalarProperty Name="CommodityImage" ColumnName="CommodityImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PurchaseOrders">
+      <EntityTypeMapping TypeName="IsTypeOf(MVCModel.PurchaseOrder)">
+        <MappingFragment StoreEntitySet="PurchaseOrders">
+          <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="CommodityAmount" ColumnName="CommodityAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SellOrders">
+      <EntityTypeMapping TypeName="IsTypeOf(MVCModel.SellOrder)">
+        <MappingFragment StoreEntitySet="SellOrders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="CommodityID" ColumnName="CommodityID" />
+          <ScalarProperty Name="CommodityAmount" ColumnName="CommodityAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(MVCModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Rank" ColumnName="Rank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

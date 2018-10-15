@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Sign in";
+    Layout = "../Shared/_layoutCover.cshtml";
+}
+<link href="~/Content/signin.css" rel="stylesheet">
+
+@*<script type="text/javascript">
+        $(function () {
+            $(".nav-link").each(
+                function () {
+                    $(this).removeClass("active");
+                    if ($(this).text() =='@ViewBag.Title') {
+                        $(this).addClass("active");
+                    }
+                }
+            );
+        });
+</script>*@
+
+<form class="form-signin" action="./SignIn" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">Sign in to XXX</h1>
+    <label for="Email" class="float-left">Email address</label>
+    <label class="float-right text-danger">@ViewBag.ErrorMessage</label>
+    <input id="Email" name="Email" class="form-control" placeholder="Email address" required=""
+           oninvalid="setCustomValidity('please enter your email.')" oninput="setCustomValidity('')" type="email" autofocus>
+    <label for="Password" class="float-left">Password</label>
+    <input id="Password" name="Password" class="form-control" placeholder="Password" required=""
+           oninvalid="setCustomValidity('please enter your new password.')" oninput="setCustomValidity('')" type="password">
+    <div class="checkbox mb-3">
+        <label>
+            <a href="/Index/ForgetPassword">Forgot password?</a>
+        </label>
+    </div>
+    @*<a href="#" class="btn btn-lg btn-secondary">Learn more</a>*@
+    <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+</form>

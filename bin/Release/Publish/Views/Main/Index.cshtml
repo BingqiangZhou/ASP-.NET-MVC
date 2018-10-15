@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Model.Models.CommoditySaleDeatil>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    }
+<p></p>
+<p class="text-left">Tip:The statistics is not include commodity which have not sales volume.</p>
+    <table class="table">
+        <tr>
+            <th>
+                CommodityId
+            </th>
+            <th>
+                CommodityName
+            </th>
+            <th>
+                CommodityPrice
+            </th>
+            <th>
+                    CommodityAmount
+                </th>
+            <th>
+                Inventory
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommoditySellAmount)
+            </td>
+        </tr>
+        }
+
+    </table>
+

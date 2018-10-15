@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Model.Models.Commodity>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@*<h2>Index</h2>*@
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<form>
+        <nav class="navbar navbar-expand-lg bg-transparent">
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-secondary font-weight-bold" id="Sort">Sort</button>
+
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ASC</button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="#">DESC</a>
+                        <a class="dropdown-item" href="#">ASC</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="javascript:void(0);">Price</a>
+                @*<a class="nav-item nav-link" href="?Sort=SalesVolume">Sales Volume</a>*@
+                <a class="nav-item nav-link" href="javascript:void(0)">Inventory</a>
+            </div>
+        </nav>
+    </form>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CommodityId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommodityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommodityPrice)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CommodityAmount)
+        </th>*@
+        <th>
+            Inventory
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommodityAmount)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CommodityId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CommodityId }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.CommodityId })*@
+            </td>
+        </tr>
+    }
+
+</table>

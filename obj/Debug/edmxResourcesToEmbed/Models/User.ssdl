@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVCModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MVCModelStoreContainer">
+    <EntitySet Name="Users" EntityType="MVCModel.Store.Users" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="32" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="15" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Rank" Type="tinyint" Nullable="false" />
+  </EntityType>
+</Schema>

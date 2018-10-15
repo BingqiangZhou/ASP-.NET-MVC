@@ -1,0 +1,51 @@
+﻿@model Model.Models.Commodity
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@*<h2>Details</h2>*@
+
+<div>
+    <h4>CommodityId:@Html.DisplayFor(model => model.CommodityId)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CommodityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommodityName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommodityPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommodityPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommodityAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommodityAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommodityImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommodityImage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CommodityId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,48 @@
+﻿@model Model.Models.SellOrder
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>SellOrder: O<span id="time">@DateTime.Now.ToFileTime()</span></h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row justify-content-center">
+        <div class="form-group float-left">
+            @Html.LabelFor(model => model.CommodityID, htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.CommodityID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CommodityID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="form-group">
+            @Html.LabelFor(model => model.CommodityAmount, htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.CommodityAmount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CommodityAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+ </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
