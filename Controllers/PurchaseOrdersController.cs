@@ -35,7 +35,7 @@ namespace Model.Controllers
               q.CommodityName,
               q.CommodityPrice,
               p.CommodityAmount,
-              q.CommodityImage)).ToList();
+              q.CommodityImage,q.CommodityType)).ToList();
             ViewBag.ID = id;
             return View(list);
         }

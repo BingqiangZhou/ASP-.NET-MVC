@@ -9,6 +9,14 @@
     <Property Name="CommodityPrice" Type="int" Nullable="false" />
     <Property Name="CommodityAmount" Type="int" Nullable="false" />
     <Property Name="CommodityImage" Type="nvarchar" MaxLength="50" />
+    <Property Name="CommodityType" Type="nchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="CommodityType">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="32" Nullable="false" />
   </EntityType>
   <EntityType Name="PurchaseOrders">
     <Key>
@@ -40,6 +48,7 @@
   </EntityType>
   <EntityContainer Name="MVCModelStoreContainer">
     <EntitySet Name="Commodities" EntityType="Self.Commodities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommodityType" EntityType="Self.CommodityType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SellOrders" EntityType="Self.SellOrders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />

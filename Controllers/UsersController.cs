@@ -4,119 +4,114 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Model.Models;
 
 namespace Model.Controllers
 {
-    public class SellOrdersController : Controller
+    public class UsersController : Controller
     {
         private MVCEntities db = new MVCEntities();
 
-        // GET: SellOrders
+        // GET: Users
         public ActionResult Index()
         {
-            var list = db.SellOrders.Select(p => p.OrderId).Distinct().ToList();
-            return View(list);
+            return View(db.Users.ToList());
         }
 
-        // GET: SellOrders/Details/5
+        // GET: Users/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var order = db.SellOrders.AsEnumerable().Where(p => p.OrderId.Equals(id));
-            var list = order.Join(
-                db.Commodities, p => p.CommodityID, q => q.CommodityId,
-                (p, q) =>
-                    new Commodity(q.CommodityId,
-              q.CommodityName,
-              q.CommodityPrice,
-              p.CommodityAmount,
-              q.CommodityImage,q.CommodityType)).ToList();
-            ViewBag.ID = id;
-            return View(list);
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
         }
 
-        // GET: SellOrders/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: SellOrders/Create
+        // POST: Users/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,CommodityID,CommodityAmount")] SellOrder sellOrder)
+        public ActionResult Create([Bind(Include = "Email,Name,Password,Status,Rank")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.SellOrders.Add(sellOrder);
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(sellOrder);
+            return View(user);
         }
 
-        // GET: SellOrders/Edit/5
+        // GET: Users/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SellOrder sellOrder = db.SellOrders.Find(id);
-            if (sellOrder == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(sellOrder);
+            return View(user);
         }
 
-        // POST: SellOrders/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,CommodityID,CommodityAmount")] SellOrder sellOrder)
+        public ActionResult Edit([Bind(Include = "Email,Name,Password,Status,Rank")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sellOrder).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(sellOrder);
+            return View(user);
         }
 
-        // GET: SellOrders/Delete/5
+        // GET: Users/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SellOrder sellOrder = db.SellOrders.Find(id);
-            if (sellOrder == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(sellOrder);
+            return View(user);
         }
 
-        // POST: SellOrders/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SellOrder sellOrder = db.SellOrders.Find(id);
-            db.SellOrders.Remove(sellOrder);
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -14,6 +14,14 @@
           <Property Name="CommodityPrice" Type="int" Nullable="false" />
           <Property Name="CommodityAmount" Type="int" Nullable="false" />
           <Property Name="CommodityImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommodityType" Type="nchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="CommodityType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <EntityType Name="PurchaseOrders">
           <Key>
@@ -45,6 +53,7 @@
         </EntityType>
         <EntityContainer Name="MVCModelStoreContainer">
           <EntitySet Name="Commodities" EntityType="Self.Commodities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommodityType" EntityType="Self.CommodityType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SellOrders" EntityType="Self.SellOrders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -62,6 +71,7 @@
           <Property Name="CommodityPrice" Type="Int32" Nullable="false" />
           <Property Name="CommodityAmount" Type="Int32" Nullable="false" />
           <Property Name="CommodityImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommodityType" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
@@ -96,7 +106,15 @@
           <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
           <EntitySet Name="SellOrders" EntityType="Self.SellOrder" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="CommodityTypes" EntityType="MVCModel.CommodityType" />
         </EntityContainer>
+        <EntityType Name="CommodityType">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="TypeId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -106,7 +124,8 @@
     <EntitySetMapping Name="Commodities">
       <EntityTypeMapping TypeName="IsTypeOf(MVCModel.Commodity)">
         <MappingFragment StoreEntitySet="Commodities">
-          <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
+          <ScalarProperty Name="CommodityType" ColumnName="CommodityType" />
+                <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
           <ScalarProperty Name="CommodityName" ColumnName="CommodityName" />
           <ScalarProperty Name="CommodityPrice" ColumnName="CommodityPrice" />
           <ScalarProperty Name="CommodityAmount" ColumnName="CommodityAmount" />
@@ -143,6 +162,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="CommodityTypes">
+            <EntityTypeMapping TypeName="MVCModel.CommodityType">
+              <MappingFragment StoreEntitySet="CommodityType">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

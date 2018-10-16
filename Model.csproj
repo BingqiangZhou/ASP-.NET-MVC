@@ -191,6 +191,7 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PurchaseOrdersController.cs" />
     <Compile Include="Controllers\SellOrdersController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +199,9 @@
       <DependentUpon>ModelEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommoditySaleDetail.cs" />
+    <Compile Include="Models\CommodityType.cs">
+      <DependentUpon>ModelEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -264,6 +268,11 @@
     <Content Include="Views\SellOrders\Details.cshtml" />
     <Content Include="Views\SellOrders\Edit.cshtml" />
     <Content Include="Views\SellOrders\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Commodities">
       <EntityTypeMapping TypeName="IsTypeOf(MVCModel.Commodity)">
         <MappingFragment StoreEntitySet="Commodities">
+          <ScalarProperty Name="CommodityType" ColumnName="CommodityType" />
           <ScalarProperty Name="CommodityId" ColumnName="CommodityId" />
           <ScalarProperty Name="CommodityName" ColumnName="CommodityName" />
           <ScalarProperty Name="CommodityPrice" ColumnName="CommodityPrice" />
@@ -38,6 +39,14 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Rank" ColumnName="Rank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommodityTypes">
+      <EntityTypeMapping TypeName="MVCModel.CommodityType">
+        <MappingFragment StoreEntitySet="CommodityType">
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -19,18 +19,21 @@ namespace Model.Models
         public int CommodityPrice { get; set; }
         public int CommodityAmount { get; set; }
         public string CommodityImage { get; set; }
+        public string CommodityType { get; set; }
 
-        public Commodity(string commodityId, string commodityName, int commodityPrice, int commodityAmount, string commodityImage)
+        public Commodity(string commodityId, string commodityName, int commodityPrice,
+            int commodityAmount, string commodityImage, string commodityType)
         {
             CommodityId = commodityId;
             CommodityName = commodityName;
             CommodityPrice = commodityPrice;
             CommodityAmount = commodityAmount;
             CommodityImage = commodityImage;
+            CommodityType = commodityType;
         }
-
-        public Commodity()
+        public  Commodity()
         {
+
         }
     }
 }

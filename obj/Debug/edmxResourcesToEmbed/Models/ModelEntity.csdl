@@ -9,6 +9,7 @@
     <Property Name="CommodityPrice" Type="Int32" Nullable="false" />
     <Property Name="CommodityAmount" Type="Int32" Nullable="false" />
     <Property Name="CommodityImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommodityType" Type="String" MaxLength="32" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="PurchaseOrder">
     <Key>
@@ -43,5 +44,13 @@
     <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
     <EntitySet Name="SellOrders" EntityType="Self.SellOrder" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="CommodityTypes" EntityType="MVCModel.CommodityType" />
   </EntityContainer>
+  <EntityType Name="CommodityType">
+    <Key>
+      <PropertyRef Name="TypeId" />
+    </Key>
+    <Property Name="TypeId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

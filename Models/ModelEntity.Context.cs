@@ -29,5 +29,6 @@ namespace Model.Models
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<SellOrder> SellOrders { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<CommodityType> CommodityTypes { get; set; }
     }
 }

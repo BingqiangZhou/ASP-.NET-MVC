@@ -77,7 +77,25 @@ namespace Model.Controllers
         // GET: Commodity/Create
         public ActionResult Create()
         {
+            ViewBag.Types = GetCommodityType();
             return View();
+        }
+
+        [NonAction]
+        public List<SelectListItem> GetCommodityType()
+        {
+            var list = db.CommodityTypes.Select(p => p.TypeId);
+            var selectItemList = new List<SelectListItem>();
+            int i = 0;
+            foreach (var item in list)
+            {
+                if (i == 0)
+                    selectItemList.Add(new SelectListItem() { Value = item.ToString(), Text = item.ToString(), Selected = true });
+                else
+                    selectItemList.Add(new SelectListItem() { Value = item.ToString(), Text = item.ToString() });
+                i++;
+            }
+            return selectItemList;
         }
 
         // POST: Commodity/Create
@@ -85,7 +103,7 @@ namespace Model.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommodityId,CommodityName,CommodityPrice,CommodityAmount,CommodityImage")] Commodity commodity)
+        public ActionResult Create([Bind(Include = "CommodityId,CommodityName,CommodityPrice,CommodityAmount,CommodityImage,CommodityType")] Commodity commodity)
         {
             if (ModelState.IsValid)
             {
